@@ -1,5 +1,8 @@
 from dotenv import load_dotenv
 import os
+from requests_oauthlib import OAuth2Session
+from oauthlib.oauth2 import BackendApplicationClient
+
 load_dotenv()  
 client_id = os.getenv('TWITTER_CLIENT_ID')
 client_secret = os.getenv('TWITTER_CLIENT_SECRET')
@@ -11,6 +14,11 @@ consumer_key = os.getenv('TWITTER_CONSUMER_KEY')
 consumer_secret = os.getenv('TWITTER_CONSUMER_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+
+client = BackendApplicationClient(client_id=client_id)
+oauth = OAuth2Session(client=client)
+token = oauth.fetch_token(token_url='https://api.twitter.com/oauth2/token', client_id=client_id, client_secret=client_secret)
+
 
 # authenticate with Twitter
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
