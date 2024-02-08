@@ -26,6 +26,15 @@ auth.set_access_token(access_token, access_token_secret)
 # create an API object
 api = tweepy.API(auth)
 
+# # write a function to get the user's timeline
+# def get_timeline():
+#     # get the user's timeline
+#     timeline = api.home_timeline()
+#     # iterate over the tweets
+#     for tweet in timeline:
+#         # print the tweet's text
+#         print(tweet.text)   
+
 # write a function to post a tweet
 def post_tweet():
     # get the user's input
